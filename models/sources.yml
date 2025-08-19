@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: orders_mart          # logical source name used in {{ source(...) }}
+    database: orders_mart      # raw database (where your raw tables live)
+    schema: raw                # raw schema
+    tables:
+      - name: products_raw
+        loaded_at_field: LOAD_TIMESTAMP
+        freshness:
+          warn_after: {count: 365, period: day}
+          error_after: {count: 9999, period: day}
+
+      - name: customers_raw
+        loaded_at_field: LOAD_TIMESTAMP
+        freshness:
+          warn_after: {count: 365, period: day}
+          error_after: {count: 9999, period: day}
+
+      - name: orders_raw
+        loaded_at_field: LOAD_TIMESTAMP
+        freshness:
+          warn_after: {count: 365, period: day}
+          error_after: {count: 9999, period: day}

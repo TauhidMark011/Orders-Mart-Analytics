@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned customers data from raw layer"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - not_null: {}
+          - unique: {}
+
+  - name: stg_orders
+    description: "Cleaned orders data from raw layer"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        tests:
+          - not_null: {}
+          - unique: {}
+
+  - name: stg_products
+    description: "Cleaned products data from raw layer"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product"
+        tests:
+          - not_null: {}
+          - unique: {}

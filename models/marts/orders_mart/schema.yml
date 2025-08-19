@@ -1,0 +1,97 @@
+models:
+  - name: dim_customers
+    description: "Customer dimension built from staging; one row per customer."
+    columns:
+      - name: customer_id
+        description: "Natural key from source."
+        tests: [not_null, unique]
+
+      - name: customer_key
+        description: "Surrogate key (e.g., CUST000123)."
+        tests: [not_null, unique]
+
+      - name: first_name
+        description: "Customer's first name."
+        tests: [not_null]
+
+      - name: last_name
+        description: "Customer's last name."
+        tests: [not_null]
+
+      - name: full_name
+        description: "Concatenated first and last name."
+
+      - name: email
+        description: "Customer email address."
+        tests: [not_null]
+
+      - name: signup_date
+        description: "Date the customer signed up."
+
+  - name: dim_products
+    description: "Product dimension built from staging; one row per product."
+    columns:
+      - name: product_id
+        description: "Natural key from source."
+        tests: [not_null, unique]
+
+      - name: product_key
+        description: "Surrogate key for product (e.g., PROD000123)."
+        tests: [not_null, unique]
+
+      - name: product_name
+        description: "Standardized product name."
+        tests: [not_null]
+
+      - name: category
+        description: "Product category."
+        tests: [not_null]
+
+      - name: price
+        description: "Unit price."
+        tests: [not_null]
+
+      - name: stock_quantity
+        description: "Current stock level."
+        tests: [not_null]
+
+  - name: fct_orders
+    description: "Fact table capturing order transactions."
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order."
+        tests: [not_null]
+
+      - name: customer_key
+        description: "FK to dim_customers."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_key
+
+      - name: product_key
+        description: "FK to dim_products."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_products')
+              field: product_key
+
+      - name: order_date
+        description: "Date of order."
+        tests: [not_null]
+
+      - name: quantity
+        description: "Ordered quantity."
+        tests: [not_null]
+
+      - name: unit_price
+        description: "Unit price at time of order."
+
+      - name: order_amount
+        description: "Total order line value."
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [order_id, product_key]

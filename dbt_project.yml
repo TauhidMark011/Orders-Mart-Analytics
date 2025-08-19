@@ -1,0 +1,18 @@
+name: orders_mart_dbt
+version: 1.0.0
+config-version: 2
+
+profile: orders_mart_dbt
+
+# Paths where dbt will find models, tests, snapshots, etc.
+model-paths: ["models"]
+
+# Default settings for models
+models:
+  orders_mart_dbt:
+    +materialized: view
+
+# vars:
+#   ls_sales_dashboard_url: "https://lookerstudio.google.com/report/your-dashboard"
+
+

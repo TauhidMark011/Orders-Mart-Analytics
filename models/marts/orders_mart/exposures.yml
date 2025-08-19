@@ -1,0 +1,25 @@
+version: 2
+
+exposures:
+  - name: orders_mart_dashboard
+
+    type: dashboard            # valid: dashboard | analysis | notebook | ml | application
+    maturity: high
+    url: "{{ var('ls_sales_dashboard_url', 'https://lookerstudio.google.com/reporting/9b17ca93-8abb-46ec-947c-e1c36bc34a3d') }}"
+    description: >
+      Looker Studio dashboard with Total Sales by Month, Top Customers,
+      and Product Trends.
+
+    depends_on:
+      - ref('fct_orders')
+      - ref('dim_customers')
+      - ref('dim_products')
+
+    owner:
+      name: Tauhid Commander
+      email: tauhid7870@example.com
+
+    tags: ['bi', 'looker-studio', 'orders-mart']
+    meta:
+      business_owner: 'Sales Ops'
+      bi_tool: 'Looker Studio'
