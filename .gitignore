@@ -1,14 +1,14 @@
 # Ignore Snowflake credentials
 set_env.ps1
 
-# Python
-__pycache__/
-*.pyc
-.venv/
+# # Python
+# __pycache__/
+# *.pyc
+# .venv/
 
-# dbt
-target/
-dbt_packages/
+# # dbt
+# target/
+# dbt_packages/
 
 # VS Code
 .vscode/
