@@ -1,5 +1,4 @@
 📦 Orders-Mart-Analytics :- 
-Analytical Orders Mart — end-to-end
 This project demonstrates the end-to-end design and implementation of an Analytical Orders Mart using Snowflake, PostgreSQL, and dbt. The goal is to design a scalable, reliable, analytics-ready pipeline that ingests raw data, applies transformations via dbt, and produces fact & dimension tables for BI use-cases. A simple BI demo is created with Google Looker Studio. While Snowflake was the core data warehouse for this project, PostgreSQL was introduced as a secondary environment for data validation and to showcase cross-platform SQL workflows. The raw data was first staged and loaded into Snowflake, after which dbt transformations were applied to build fact and dimension tables.
 
 🔎 Project Highlights (short)
