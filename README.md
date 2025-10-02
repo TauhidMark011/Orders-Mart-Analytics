@@ -130,4 +130,8 @@ e.Build marts (dimensions + facts): dbt run --select dim_customers dim_products 
 f.Run tests: dbt test
 g.Generate docs & view: Generate docs & view:
 
-
+__Next Steps (Future Enhancements)__
+- Automate ingestion using Airflow or dbt Cloud jobs.
+- Implement incremental models in dbt for large datasets.
+- Use Snowflake Streams + Tasks for near real-time ingestion.
+- Expand BI dashboards with advanced metrics (e.g., customer segmentation, churn analysis).
